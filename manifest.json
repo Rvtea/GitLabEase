@@ -1,0 +1,21 @@
+{
+  "name": "GitLabEase",
+  "version": "1.0",
+  "description": "an extension to make GitLab usage easier",
+  "manifest_version": 2,
+  "homepage_url": "https://github.com/Rvtea/GitLabEase",
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": ["https://*/*/merge_requests/*/diffs*"],
+      "css": ["src/content/content.css"],
+      "js": ["src/page_utils.js", "src/content/content.js"]
+    }
+  ],
+  "permissions": ["tabs", "storage"],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "src/popup/popup.html",
+    "default_title": "GitLabEase - an extension to make GitLab usage easier!"
+  }
+}
