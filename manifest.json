@@ -1,13 +1,13 @@
 {
   "name": "GitLabEase",
-  "version": "1.0",
+  "version": "1.1",
   "description": "an extension to make GitLab usage easier",
   "manifest_version": 2,
   "homepage_url": "https://github.com/Rvtea/GitLabEase",
   "content_scripts": [
     {
       "run_at": "document_start",
-      "matches": ["https://*/*/merge_requests/*/diffs*"],
+      "matches": ["https://*/*/merge_requests/*"],
       "css": ["src/content/content.css"],
       "js": ["src/page_utils.js", "src/content/content.js"]
     }

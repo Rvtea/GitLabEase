@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // per https://gitlab.com/gitlab-org/gitlab-ce/issues/2479
 const setTabSize = tabSize =>
   (extraStyle.innerHTML = `
-* {
+.line {
 	-moz-tab-size: ${tabSize} !important;
 	     tab-size: ${tabSize} !important;
 }`);
