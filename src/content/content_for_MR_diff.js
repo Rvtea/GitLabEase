@@ -1,3 +1,9 @@
+/*
+  This file is used to handle URL like: https://git.yourdomain/yourrepo/merge_requests/12345[/diffs]
+  * this url aims to MR diff page usage
+  * this script will looping till diff page rendered.
+*/
+
 var autoFold = false;
 chrome.storage.local.get(
   { autoFold: false },

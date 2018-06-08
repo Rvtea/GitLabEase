@@ -8,8 +8,7 @@
     {
       "run_at": "document_start",
       "matches": ["https://*/*/merge_requests/*"],
-      "css": ["src/content/content.css"],
-      "js": ["src/page_utils.js", "src/content/content.js"]
+      "js": ["src/page_utils.js", "src/content/content_for_MR_diff.js"]
     }
   ],
   "permissions": ["tabs", "storage"],

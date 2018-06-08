@@ -20,9 +20,13 @@ function foldFileRow() {
   // if this part become an array, then code below need enhancement
   const regexpPlan = ['test', 'spec', '.pb.go', '.pb.gw.go', '.swagger.json'];
 
-  // loop the files first
+  // loop the files
   let diffFiles = document.querySelectorAll('.diff-file, .file-holder');
-  for (let idx = 0; idx < diffFiles.length; idx++) {
+  let total_diff_count = diffFiles.length;
+  let plan_element_list = [];
+  let full_plan = true;
+
+  for (let idx = 0; idx < total_diff_count; idx++) {
     const ele = diffFiles[idx];
 
     if (ele.className === 'diff-file file-holder') {
@@ -33,11 +37,23 @@ function foldFileRow() {
           false
         )
       ) {
-        // judge if the file is alreadyed folded, use click-to-expand as it exist all the time
-        if (isDiffDetailsRendered(ele)) {
-          // if matched, then automatically click to fold the opened file.
-          ele.getElementsByClassName('js-file-title')[0].click();
-        }
+        plan_element_list.push(ele);
+      } else {
+        // otherwise exist files not in plan, then we should fold planned files, fix issue #5
+        full_plan = false;
+      }
+    }
+  }
+
+  // loop to fold planned files if exist other file
+  if (!full_plan) {
+    for (let idx = 0; idx < plan_element_list.length; idx++) {
+      const element = plan_element_list[idx];
+
+      // judge if the file is alreadyed folded, use click-to-expand as it exist all the time
+      if (isDiffDetailsRendered(element)) {
+        // if matched, then automatically click to fold the opened file.
+        element.getElementsByClassName('js-file-title')[0].click();
       }
     }
   }
